@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
+    'parkingarea.apps.ParkingareaConfig',
     'frontend.apps.FrontendConfig'
 ]
 

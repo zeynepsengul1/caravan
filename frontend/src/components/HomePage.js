@@ -23,7 +23,7 @@ const HomePage = () => {
       <Hero image_url={"/media/images/hero1.jpg"}>
         <h1>Welcome</h1>
         <span>
-          This is rental car site.
+          This is caravan website.
           We are ready for our customers and will provide good enviroment.
           Thank you.
         </span>
@@ -43,10 +43,10 @@ const HomePage = () => {
         </div>
       )}
 
-      <Hero image_url={"/media/images/rental_car1.webp"}>
+      <Hero image_url={"/media/images/hero1.jpg"}>
         <h1>About Me</h1>
         <span>
-          This is rental car site.
+          This is caravan website.
           We are ready for our customers and will provide good enviroment.
           Thank you.
         </span>

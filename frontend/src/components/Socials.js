@@ -2,9 +2,9 @@ import React from "react";
 import { GrMail, GrGithub, GrResume } from "react-icons/gr";
 import customStyles from './custom.css'
 const Socials = () => {
-  const gmailUrl = "mailto:darkbear0112@gmail.com/";
-  const cvUrl = "https://cvdesignr.com/p/631e652eaef58";
-  const githubUrl = "https://github.com/DarkBear0121";
+  const gmailUrl = "mailto:zeyneppssengul@gmail.com/";
+  const cvUrl = "https://www.linkedin.com/in/zeynepsengull/";
+  const githubUrl = "https://github.com/zeynepsengul1";
   const soical_icon_class = {
     width:"400%"
   }

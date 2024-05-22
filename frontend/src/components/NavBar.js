@@ -83,7 +83,7 @@ const NavBar = () => {
         <ul className="navbar">
           <li>
             <img
-              src={window.location.origin + "/media/car_logo.jfif"}
+              src={window.location.origin + "/media/car_logo.jpg"}
               className="logo"
             />
           </li>

@@ -463,7 +463,7 @@ INSERT INTO "public"."posts_post" VALUES (6, 'Convertible Car', 'convertible-car
 INSERT INTO "public"."posts_post" VALUES (7, 'Pick Up Vehicle Car', 'pick-vehicle-car', 'thumbnails/Cars-1-1024x539_10.webp', '<p>Good truck</p>', NULL, '2022-10-10 23:28:17.659696-04', '2022-10-13 05:36:23.804603-04', 't', 1, '2022-10-13 03:19:17-04', '2022-10-13 03:19:17-04', 'f', 11);
 INSERT INTO "public"."posts_post" VALUES (9, 'SUV Car', 'suv-car', 'thumbnails/Cars-1-1024x539_8.webp', '<p>Success</p>', NULL, '2022-10-10 23:29:33.423589-04', '2022-10-13 07:33:02.981042-04', 't', 2, '2022-10-13 07:31:47.401-04', '2022-10-27 08:00:00-04', 'f', 12);
 INSERT INTO "public"."posts_post" VALUES (8, 'van-car', 'van-car', 'thumbnails/Cars-1-1024x539_9.webp', '<p>Small Bus</p>', 211, '2022-10-10 23:28:49.704346-04', '2022-10-13 08:06:00.311682-04', 't', 1, '2022-10-13 08:05:50.108-04', '2022-10-28 08:30:00-04', 'f', 3);
-INSERT INTO "public"."posts_post" VALUES (10, 'Coupe Car', 'coupe-car', 'thumbnails/Cars-1-1024x539_7.webp', '<p>Wonderful!s</p>', NULL, '2022-10-10 23:30:12.822146-04', '2022-10-13 08:06:39.773882-04', 't', 1, '2022-10-13 06:02:00-04', '2022-10-21 06:00:00-04', 't', 10);
+INSERT INTO "public"."posts_post" VALUES (10, 'Coupe Car', 'coupe-car', 'thumbnails/Cars-1-1024x539_7.png', '<p>Wonderful!s</p>', NULL, '2022-10-10 23:30:12.822146-04', '2022-10-13 08:06:39.773882-04', 't', 1, '2022-10-13 06:02:00-04', '2022-10-21 06:00:00-04', 't', 10);
 
 -- ----------------------------
 -- Table structure for posts_post_tags

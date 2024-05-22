@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer">
       <footer>
         <div>
-          Rachel@2022 by <a href="https://github.com/darkbear0121">DarkBear</a>
+          ZEYNEP ŞENGÜL
         </div>
         <Socials />
       </footer>

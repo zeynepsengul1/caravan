@@ -35,55 +35,60 @@ const NavBar = () => {
 
   const renderDesktop = () => {
     return (
-      <>
-        <li>
-          <NavLink className="navbar-item" exact to="/">
-            <strong>Home</strong>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="navbar-item" to="/posts">
-            Posts
-          </NavLink>
-        </li>
-        {user !== null ? (
-          <>
-            <li>
-              <NavLink className="navbar-item" to="/user">
-                User Panel
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-item" to="/logout">
-                Log Out
-              </NavLink>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <NavLink className="navbar-item" to="/signup">
-                Sign Up
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-item" to="/login">
-                Log In
-              </NavLink>
-            </li>
-          </>
-        )}
-      </>
+        <>
+          <li>
+            <NavLink className="navbar-item" exact to="/">
+              <strong>Home</strong>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="navbar-item" to="/posts">
+              Posts
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="navbar-item" to="/parkingareas">
+              Parking Areas
+            </NavLink>
+          </li>
+          {user !== null ? (
+              <>
+                <li>
+                  <NavLink className="navbar-item" to="/user">
+                    User Panel
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="navbar-item" to="/logout">
+                    Log Out
+                  </NavLink>
+                </li>
+              </>
+          ) : (
+              <>
+                <li>
+                  <NavLink className="navbar-item" to="/signup">
+                    Sign Up
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="navbar-item" to="/login">
+                    Log In
+                  </NavLink>
+                </li>
+              </>
+          )}
+        </>
     );
   };
 
   return (
-    <>
-      <nav>
-        <ul className="navbar">
-          <li>
-            <img
-              src={window.location.origin + "/media/car_logo.jpg"}
+      <>
+        <nav>
+          <ul className="navbar">
+            <li>
+              <img
+                  src={window.location.origin + "/media/car_logo.jpg"}
               className="logo"
             />
           </li>
@@ -112,29 +117,34 @@ const NavBar = () => {
               </NavLink>
             </li>
             {user !== null ? (
-              <>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/posts">
-                    Posts
-                  </NavLink>
-                </li>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/user">
-                    User Panel
-                  </NavLink>
-                </li>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/logout">
-                    Log Out
-                  </NavLink>
-                </li>
-              </>
+                <>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/posts">
+                      Posts
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/parkingareas">
+                      Parking Areas
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/user">
+                      User Panel
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/logout">
+                      Log Out
+                    </NavLink>
+                  </li>
+                </>
             ) : (
-              <>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/signup">
-                    Sign Up
-                  </NavLink>
+                <>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/signup">
+                      Sign Up
+                    </NavLink>
                 </li>
                 <li onClick={handleMobileMenu}>
                   <NavLink className="mobile-link" to="/login">

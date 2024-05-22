@@ -5,6 +5,8 @@ import { ProtectedRoute, NoAuthRoute } from "../routes";
 import HomePage from "./HomePage";
 import PostDetail from "./posts/PostDetail";
 import Posts from "./posts/Posts";
+import ParkingAreaDetail from "./parkingarea/ParkingAreaDetail";
+import ParkingAreas from "./parkingarea/ParkingAreas";
 import NavBar from "./NavBar";
 import NotFound from "./errors/NotFound";
 import InternalServer from "./errors/InternalServer";
@@ -48,6 +50,8 @@ const App = () => {
             <Route path="/delete/:uid/:token" component={DeleteAccount} />
             <Route path="/posts" component={Posts} />
             <Route path="/post/:slug" component={PostDetail} />
+            <Route path="/parkingareas" component={ParkingAreas} />
+            <Route path="/parkingarea/:slug" component={ParkingAreaDetail} />
             {/* Error pages */}
             <Route path="/500" component={InternalServer} status={500} />
             <Route path="*" component={NotFound} status={404} />

@@ -19,5 +19,5 @@ class ParkingAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingArea
         fields = ['title', 'slug', 'author', 'thumbnail',
-                  'description', 'read_time', 'tags', 'created_at', 'rental_start', 'rental_end','price','available','contact','address']
+                  'description', 'tags', 'created_at', 'rental_start', 'rental_end','price','available','contact','address']
         read_only_fields = ['author']

@@ -20,7 +20,7 @@ class Post(models.Model):
     is_public = models.BooleanField(default=False)
     rental_start = models.DateTimeField()
     rental_end = models.DateTimeField()
-    price =  models.IntegerField()
+    price = models.IntegerField()
     available = models.BooleanField()
     objects = PostObjects()
 

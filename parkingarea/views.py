@@ -55,15 +55,15 @@ class RentParkingArea(APIView):
     """
     @swagger_auto_schema(responses={200: AllowAny(), 404: openapi.Response(description='Not Found')})
     def get(self, request: Request, slug: str, format=None):
-        post = get_object_or_404(ParkingArea, slug=slug)
-        data = ParkingAreaSerializer(post).data
+        parkingarea = get_object_or_404(ParkingArea, slug=slug)
+        data = ParkingAreaSerializer(parkingarea).data
         return Response(data, status=status.HTTP_200_OK)
     @swagger_auto_schema(responses={200: AllowAny(), 404: openapi.Response(description='Not Found')})
     def post(self, request: Request, slug: str, format=None):
-        post = get_object_or_404(ParkingArea, slug=slug)
+        parkingarea = get_object_or_404(ParkingArea, slug=slug)
         print(request.data.get('startDate'))
-        post.rental_start =request.data.get('startDate')
-        post.rental_end =request.data.get('endDate')
-        post.available =False
-        post.save()
+        parkingarea.rental_start =request.data.get('startDate')
+        parkingarea.rental_end =request.data.get('endDate')
+        parkingarea.available =False
+        parkingarea.save()
         return Response("success", status=status.HTTP_200_OK)

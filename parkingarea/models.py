@@ -23,7 +23,8 @@ class ParkingArea(models.Model):
     available = models.BooleanField()
     contact = models.TextField()
     address = models.TextField()
-    objects = ParkingAreaObjects()
+    objects = models.Manager()  # The default manager.
+    public_objects = ParkingAreaObjects()  # Custom manager for public objects.
 
     class Meta:
         ordering = ['-created_at']

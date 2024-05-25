@@ -9,11 +9,14 @@ class ParkingAreaAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
     list_display = ('title', 'id', 'is_public', 'slug',
                     'author', 'edited_at', 'created_at', 'rental_start', 'rental_end','available','contact','address')
-    list_filter = ('is_public', 'available','rental_start', 'rental_end',)
+    list_filter = ('is_public', 'available', 'rental_start', 'rental_end',)
     search_fields = ['title', 'slug', 'author']
     prepopulated_fields = {'slug': ('title',)}
     actions = ['make_public', 'make_unpublic']
 
+    def get_queryset(self, request):
+        # Use the default manager to ensure all ParkingArea instances are returned
+        return super().get_queryset(request).all()
     def make_public(modeladmin, request, queryset):
         queryset.update(is_public=True)
         messages.success(

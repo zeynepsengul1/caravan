@@ -50,7 +50,7 @@ class PostDetail(APIView):
         data = PostSerializer(post).data
         return Response(data, status=status.HTTP_200_OK)
 
-class RentCar(APIView):
+class RentPost(APIView):
     """
     Detailed Post
 

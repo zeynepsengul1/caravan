@@ -25,7 +25,7 @@ class ParkingAreas(APIView):
     @swagger_auto_schema(responses={200: ParkingAreaSerializer(many=True)})
     def get(self, request, *args, **kwargs):
         recent = request.query_params.get('recent')
-        queryset = ParkingArea.objects.filter(available=True)
+        queryset = ParkingArea.public_objects.filter(available=True)
         if recent == 'true':
             queryset = queryset[:4]
 
@@ -86,17 +86,3 @@ class RentParkingArea(APIView):
         parkingarea.available = False
         parkingarea.save()
         return Response("success", status=status.HTTP_200_OK)
-
-
-class ParkingAreaViewSet(viewsets.ModelViewSet):
-    queryset = ParkingArea.objects.all()
-    serializer_class = ParkingAreaSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        if self.request.user.is_staff:
-            return ParkingArea.objects.all()
-        return ParkingArea.objects.filter(is_public=True)
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user, is_public=False)

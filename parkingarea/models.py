@@ -11,7 +11,7 @@ class ParkingArea(models.Model):
     slug = models.SlugField(max_length=150, unique=True, allow_unicode=True)
     author = models.ForeignKey(
         'users.User', on_delete=models.RESTRICT, related_name='parking_areas')
-    thumbnail = models.ImageField(upload_to='thumbnails')
+    thumbnail = models.ImageField(upload_to='thumbnails', default='parkingareas/default.jpg')
     description = models.TextField()
     tags = models.ManyToManyField('parkingarea.Tag')
     created_at = models.DateTimeField(auto_now_add=True)

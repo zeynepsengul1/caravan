@@ -16,8 +16,9 @@ class ParkingAreaSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     tags = TagSerializer(read_only=True, many=True)
     # title = serializers.CharField(allow_blank=True)
+
     class Meta:
         model = ParkingArea
         fields = ['title', 'slug', 'author', 'thumbnail',
-                  'description', 'tags', 'created_at', 'rental_start', 'rental_end','price','available','contact','address']
-        read_only_fields = ['author']
+                  'description', 'tags', 'created_at', 'rental_start', 'rental_end', 'price', 'available', 'contact', 'address', 'is_public']
+        read_only_fields = ['is_public']

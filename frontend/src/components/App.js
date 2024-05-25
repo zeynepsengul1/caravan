@@ -7,6 +7,7 @@ import PostDetail from "./posts/PostDetail";
 import Posts from "./posts/Posts";
 import ParkingAreaDetail from "./parkingarea/ParkingAreaDetail";
 import ParkingAreas from "./parkingarea/ParkingAreas";
+import NewParkingAreaForm from './parkingarea/NewParkingAreaForm';
 import NavBar from "./NavBar";
 import NotFound from "./errors/NotFound";
 import InternalServer from "./errors/InternalServer";
@@ -33,6 +34,7 @@ const App = () => {
             {/* Only logged in user can enter */}
             <ProtectedRoute path="/logout" component={Logout} />
             <ProtectedRoute path="/user" component={User} />
+            <Route path="/new-parking-area" component={NewParkingAreaForm} />
             {/* Everyone except logged in user can enter */}
             <NoAuthRoute path="/signup" component={Signup} />
             <NoAuthRoute path="/login" component={Login} />

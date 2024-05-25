@@ -13,7 +13,7 @@ services:
       - "5432:5432"  # Optional: Map container port to host port for easier access (not required)
     volumes:
       - postgres-data:/var/lib/postgresql/data  # Persistent storage for data
-      - ./public.sql:/docker-entrypoint-initdb.d/init.sql  # Mount init.sql script
+      - ./caravan.sql:/docker-entrypoint-initdb.d/init.sql  # Mount init.sql script
     networks:
       - my-postgres-network
 

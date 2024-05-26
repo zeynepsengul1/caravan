@@ -70,11 +70,6 @@ const NewParkingAreaForm = () => {
                        required/>
             </div>
             <div>
-                <label>Kiralama Bitiş Tarihi:</label>
-                <input type="datetime-local" name="rentalEnd" value={formData.rentalEnd} onChange={handleChange}
-                       required/>
-            </div>
-            <div>
                 <label>Fiyat:</label>
                 <input type="number" name="price" value={formData.price} onChange={handleChange} required/>
             </div>

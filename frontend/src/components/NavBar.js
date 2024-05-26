@@ -52,30 +52,35 @@ const NavBar = () => {
           </NavLink>
         </li>
         {user !== null ? (
-          <>
-            <li>
-              <NavLink className="navbar-item" to="/new-parking-area">
-                Add Parking Area
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-item" to="/user">
-                User Panel
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar-item" to="/logout">
-                Log Out
-              </NavLink>
-            </li>
-          </>
+            <>
+              <li>
+                <NavLink className="navbar-item" to="/new-parking-area">
+                  Add Parking Area
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="navbar-item" to="/new-post">
+                  Add Post
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="navbar-item" to="/user">
+                  User Panel
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="navbar-item" to="/logout">
+                  Log Out
+                </NavLink>
+              </li>
+            </>
         ) : (
-          <>
-            <li>
-              <NavLink className="navbar-item" to="/signup">
-                Sign Up
-              </NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink className="navbar-item" to="/signup">
+                  Sign Up
+                </NavLink>
+              </li>
             <li>
               <NavLink className="navbar-item" to="/login">
                 Log In
@@ -133,30 +138,35 @@ const NavBar = () => {
               </NavLink>
             </li>
             {user !== null ? (
-              <>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/new-parking-area">
-                    Add Parking Area
-                  </NavLink>
-                </li>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/user">
-                    User Panel
-                  </NavLink>
-                </li>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/logout">
-                    Log Out
-                  </NavLink>
-                </li>
-              </>
+                <>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/new-parking-area">
+                      Add Parking Area
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/new-post">
+                      Add Post
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/user">
+                      User Panel
+                    </NavLink>
+                  </li>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/logout">
+                      Log Out
+                    </NavLink>
+                  </li>
+                </>
             ) : (
-              <>
-                <li onClick={handleMobileMenu}>
-                  <NavLink className="mobile-link" to="/signup">
-                    Sign Up
-                  </NavLink>
-                </li>
+                <>
+                  <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/signup">
+                      Sign Up
+                    </NavLink>
+                  </li>
                 <li onClick={handleMobileMenu}>
                   <NavLink className="mobile-link" to="/login">
                     Log In

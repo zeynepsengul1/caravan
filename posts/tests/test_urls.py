@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import resolve
-from posts.views import PostDetail, PostsList
+from posts.views import PostDetail, Posts
 
 
 class TestUrls(TestCase):
@@ -10,7 +10,7 @@ class TestUrls(TestCase):
         Url is corresponding to PostsList view
         """
         url = resolve('/api/posts/')
-        assert url.func.cls == PostsList
+        assert url.func.cls == Posts
 
     def test_post_detail_url(self):
         """

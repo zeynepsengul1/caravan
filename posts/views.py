@@ -2,6 +2,7 @@ from datetime import datetime
 from zoneinfo import available_timezones
 
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
@@ -15,7 +16,7 @@ from posts.serializers import PostSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
-class PostsList(ListAPIView):
+class Posts(APIView):
     """
     List of Posts
 
@@ -25,19 +26,32 @@ class PostsList(ListAPIView):
     ``recent`` - If ``true`` return only the **4** most recent **Posts**.
     """
     serializer_class = PostSerializer
-
-    def get_queryset(self):
-        recent = self.request.query_params.get('recent')
-        if recent == 'true':
-            return  Post.objects.filter(available=True)[:4]
-
-        return  Post.objects.filter(available=True)
-
     @swagger_auto_schema(responses={200: PostSerializer(many=True)})
     def get(self, request, *args, **kwargs):
-        return  self.list(request, *args, **kwargs)
+        recent = request.query_params.get('recent')
+        queryset = Post.public_objects.filter(available=True)
+        if recent == 'true':
+            queryset = queryset[:4]
 
+        serializer = PostSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(
+        request_body=PostSerializer,
+        responses={200: PostSerializer(), 400: "Bad Request"}
+    )
+    def post(self, request: Request):
+        request.data['is_public'] = False
+        request.data['created_at'] = timezone.now()  # Set current time
+        request.data['edited_at'] = timezone.now()  # Set current time
+        request.data['available'] = True  # Set available to True by default
+        request.data['author'] = request.user.id
+
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(author_id=request.user.id)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class PostDetail(APIView):
     """
     Detailed Post

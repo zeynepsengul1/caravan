@@ -65,11 +65,6 @@ const NewParkingAreaForm = () => {
                 <textarea name="description" value={formData.description} onChange={handleChange} required/>
             </div>
             <div>
-                <label>Kiralama Başlangıç Tarihi:</label>
-                <input type="datetime-local" name="rentalStart" value={formData.rentalStart} onChange={handleChange}
-                       required/>
-            </div>
-            <div>
                 <label>Fiyat:</label>
                 <input type="number" name="price" value={formData.price} onChange={handleChange} required/>
             </div>

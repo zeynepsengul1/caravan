@@ -12,7 +12,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('is_public', 'available','rental_start', 'rental_end',)
     search_fields = ['title', 'slug', 'author']
     prepopulated_fields = {'slug': ('title',)}
-    actions = ['make_public', 'make_unpublic']
+    actions = ['make_public', 'make_unpublic','make_available','make_unavailable']
 
     def make_public(modeladmin, request, queryset):
         queryset.update(is_public=True)
@@ -23,6 +23,16 @@ class PostAdmin(SummernoteModelAdmin):
         queryset.update(is_public=False)
         messages.success(
             request, 'Selected Post(s) are no longer public!')
+
+    def make_available(modeladmin, request, queryset):
+        queryset.update(available=True)
+        messages.success(
+            request, 'Selected Post(s) are now available !')
+
+    def make_unpublic(modeladmin, request, queryset):
+        queryset.update(available=False)
+        messages.success(
+            request, 'Selected Post(s) are no longer available!')
 
 
 @admin.register(Tag)

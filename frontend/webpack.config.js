@@ -20,6 +20,10 @@ module.exports = {
         test: /\.xml$/i,
         use: "raw-loader",
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   optimization: {

@@ -2,7 +2,6 @@ from django.db import models
 
 
 class ParkingArea(models.Model):
-
     class ParkingAreaObjects(models.Manager):
         def get_queryset(self):
             return super().get_queryset().filter(is_public=True)
@@ -41,3 +40,16 @@ class Tag(models.Model):
 
     def __str__(self):
         return f'{self.id}. {self.name}'
+
+
+class Comment(models.Model):
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    parking_area = models.ForeignKey(ParkingArea, on_delete=models.CASCADE, related_name='comments')
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.user.username} - {self.parking_area.title}'

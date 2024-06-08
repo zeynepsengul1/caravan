@@ -22,6 +22,7 @@ import Logout from "./auth/Logout";
 import User from "./user/User";
 import ScrollToTop from "./ScrollToTop";
 import NewPostForm from "./posts/NewPostForm";
+import MapWithDirections from './parkingarea/MapWithDirections';
 
 const App = () => {
   return (
@@ -37,6 +38,8 @@ const App = () => {
             <ProtectedRoute path="/user" component={User} />
             <Route path="/new-parking-area" component={NewParkingAreaForm} />
             <Route path="/new-post" component={NewPostForm} />
+            <Route path="/directions" component={MapWithDirections} />
+
             {/* Everyone except logged in user can enter */}
             <NoAuthRoute path="/signup" component={Signup} />
             <NoAuthRoute path="/login" component={Login} />

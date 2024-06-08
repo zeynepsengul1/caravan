@@ -41,13 +41,14 @@ class Posts(APIView):
         responses={200: PostSerializer(), 400: "Bad Request"}
     )
     def post(self, request: Request):
+        data = request.data.copy()
         request.data['is_public'] = False
         request.data['created_at'] = timezone.now()  # Set current time
         request.data['edited_at'] = timezone.now()  # Set current time
         request.data['available'] = True  # Set available to True by default
         request.data['author'] = request.user.id
 
-        serializer = PostSerializer(data=request.data)
+        serializer = PostSerializer(data=data)
         if serializer.is_valid():
             serializer.save(author_id=request.user.id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -2,14 +2,14 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status, viewsets, permissions
-from rest_framework.permissions import AllowAny
+from rest_framework import status, viewsets, permissions, generics
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from parkingarea.models import ParkingArea
-from parkingarea.serializers import ParkingAreaSerializer
+from parkingarea.models import ParkingArea, Comment
+from parkingarea.serializers import ParkingAreaSerializer, CommentSerializer, CommentCreateSerializer
 
 
 class ParkingAreas(APIView):
@@ -37,13 +37,14 @@ class ParkingAreas(APIView):
         responses={200: ParkingAreaSerializer(), 400: "Bad Request"}
     )
     def post(self, request: Request):
+        data = request.data.copy()
         request.data['is_public'] = False
         request.data['tags'] = []  # Assuming tags is a list field
         request.data['created_at'] = timezone.now()  # Set current time
         request.data['available'] = True  # Set available to True by default
         request.data['author'] = request.user.id
 
-        serializer = ParkingAreaSerializer(data=request.data)
+        serializer = ParkingAreaSerializer(data=data)
         if serializer.is_valid():
             serializer.save(author_id=request.user.id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -86,3 +87,47 @@ class RentParkingArea(APIView):
         parkingarea.available = False
         parkingarea.save()
         return Response("success", status=status.HTTP_200_OK)
+
+
+class CommentListCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    @swagger_auto_schema(
+        responses={200: CommentSerializer(many=True)}
+    )
+    def get(self, request, slug, format=None):
+        recent = request.query_params.get('recent')
+        try:
+            parking_area = ParkingArea.objects.get(slug=slug)
+        except ParkingArea.DoesNotExist:
+            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        queryset = Comment.objects.filter(parking_area=parking_area)
+        if recent == 'true':
+            queryset = queryset.order_by('-created_at')[:5]
+
+        serializer = CommentSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @swagger_auto_schema(
+        request_body=CommentCreateSerializer,
+        responses={
+            201: CommentSerializer(),
+            400: "Bad Request"
+        }
+    )
+    def post(self, request, slug, format=None):
+        try:
+            parking_area = ParkingArea.objects.get(slug=slug)
+        except ParkingArea.DoesNotExist:
+            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        data = request.data.copy()
+        data['user'] = request.user.id
+        data['parking_area'] = parking_area.id
+
+        serializer = CommentCreateSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save(user=request.user, parking_area=parking_area)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

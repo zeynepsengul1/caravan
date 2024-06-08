@@ -1,43 +1,52 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import connection from "../../connection";
+import MapComponent from './MapComponent';
+import './NewParkingAreaForm.css';
 
 const NewParkingAreaForm = () => {
     const [formData, setFormData] = useState({
         title: '',
         slug: '',
-        location: '',
+        // location: '',
         description: '',
         rentalStart: '',
         rentalEnd: '',
         price: '',
         contact: '',
-        address: ''
+        address: '',
+        thumbnail: null // Add a photo property
     });
     const history = useHistory();
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        const { name, value, files } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: files ? files[0] : value
+        }));
+    };
+
+    const handleMapClick = (address) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            address: `${address.lat},${address.lng}`,
+        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const data = new FormData();
+        for (const key in formData) {
+            data.append(key, formData[key]);
+        }
+
         try {
-            await connection.post('parkingareas/', {
-                title: formData.title,
-                slug: formData.slug,
-                location: formData.location,
-                description: formData.description,
-                rental_start: formData.rentalStart,
-                rental_end: formData.rentalEnd,
-                price: formData.price,
-                contact: formData.contact,
-                address: formData.address,
-            }
-            );
+            await connection.post('parkingareas/', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             alert('Karavan park alanı başarıyla eklendi. Onay için bekleniyor.');
             history.push('parkingareas');
         } catch (error) {
@@ -47,7 +56,7 @@ const NewParkingAreaForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
             <div>
                 <label>Başlık:</label>
                 <input type="text" name="title" value={formData.title} onChange={handleChange} required/>
@@ -57,8 +66,8 @@ const NewParkingAreaForm = () => {
                 <input type="text" name="slug" value={formData.slug} onChange={handleChange} required/>
             </div>
             <div>
-                <label>Lokasyon:</label>
-                <input type="text" name="location" value={formData.location} onChange={handleChange} required/>
+                <label>Adres:</label>
+                <MapComponent onMapClick={handleMapClick}/>
             </div>
             <div>
                 <label>Açıklama:</label>
@@ -72,9 +81,13 @@ const NewParkingAreaForm = () => {
                 <label>İletişim:</label>
                 <textarea name="contact" value={formData.contact} onChange={handleChange} required/>
             </div>
+            {/*<div>*/}
+            {/*    <label>Adres:</label>*/}
+            {/*    <textarea name="address" value={formData.address} onChange={handleChange} required/>*/}
+            {/*</div>*/}
             <div>
-                <label>Adres:</label>
-                <textarea name="address" value={formData.address} onChange={handleChange} required/>
+                <label>Fotoğraf:</label>
+                <input type="file" name="thumbnail" onChange={handleChange} required/>
             </div>
             <button type="submit">Ekle</button>
         </form>

@@ -29,6 +29,8 @@ urlpatterns = [
     path('api/posts/', include('posts.urls')),
     path('api/parkingareas/', include('parkingarea.urls')),
     path('api/user/', include('users.urls')),
+    path('api/ai/', include('ai.urls')),
+
     # Tokens
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),

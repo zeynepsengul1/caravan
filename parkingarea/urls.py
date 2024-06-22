@@ -8,4 +8,4 @@ urlpatterns = [
     path('<slug:slug>/', ParkingAreasDetail.as_view()),
     path('<slug:slug>/rent', RentParkingArea.as_view()),
     path('<slug:slug>/comments/', CommentListCreateAPIView.as_view()),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

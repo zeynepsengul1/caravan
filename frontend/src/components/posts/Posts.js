@@ -1,8 +1,11 @@
+// Posts.js
+
 import React, { useState, useEffect } from "react";
 import MinimalPost from "./MinimalPost";
 import SearchBar from "../SearchBar";
 import Pagination from "../Pagination";
 import connection from "../../connection";
+import "./MinimalPost.css";
 
 const Posts = () => {
   const [postsList, setPostsList] = useState([]);
@@ -16,7 +19,6 @@ const Posts = () => {
     connection
       .get("posts/")
       .then((res) => {
-        console.log(res.data);
         setPostsList(res.data);
         setMaxPages(Math.ceil(res.data.length / postsPerPage));
       })
@@ -26,7 +28,6 @@ const Posts = () => {
   useEffect(() => {
     let query = postsList.filter((e) => e.title.match(search));
     setMaxPages(Math.ceil(query.length / postsPerPage));
-    // Swap to first page to make sure we won't be stuck on any page without items
     setCurrentPage(0);
   }, [search]);
 
@@ -54,7 +55,9 @@ const Posts = () => {
             currentPage * postsPerPage + postsPerPage
           )
           .map((post) => (
-            <MinimalPost key={post.slug} {...post} />
+            <div key={post.slug} className="minimal-post-link">
+              <MinimalPost {...post} />
+            </div>
           ))}
       </div>
     </div>

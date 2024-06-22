@@ -26,7 +26,7 @@ const CommentForm = ({ slug }) => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="comment-form" onSubmit={handleSubmit}>
       <textarea
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}

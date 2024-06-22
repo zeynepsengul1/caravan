@@ -31,7 +31,7 @@ class Posts(APIView):
         recent = request.query_params.get('recent')
         queryset = Post.public_objects.filter(available=True)
         if recent == 'true':
-            queryset = queryset[:4]
+            queryset = queryset[:3]
 
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

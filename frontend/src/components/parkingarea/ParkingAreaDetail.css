@@ -1,0 +1,249 @@
+/* ParkingAreaDetail.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9; /* Light gray background */
+  color: #333;
+}
+
+.parking-area-detail {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.parking-area-detail img {
+  border-radius: 10px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.parking-area-detail h1 {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+.parking-area-detail h3 {
+  font-size: 1.5em;
+  color: #666;
+  margin: 10px 0;
+}
+
+.parking-area-detail .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.parking-area-detail .tags span {
+  background: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.parking-area-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.parking-area-info img.avatar-medium {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.parking-area-info p {
+  margin: 0;
+}
+
+.parking-area-info span {
+  margin-left: 10px;
+  color: #666;
+}
+
+fieldset {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9; /* Light gray background for fieldset */
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+legend {
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.parking-area-description {
+  margin-top: 10px;
+}
+
+.rent-form {
+  margin-top: 20px;
+}
+
+.rent-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rent-form-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rent-form-col span {
+  margin-bottom: 5px;
+}
+
+.rent-form-col .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.animated-button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.animated-button:hover {
+  background-color: #0056b3;
+}
+
+.google-map {
+  margin-top: 20px;
+}
+
+.comment-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.comment-form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comment-form button:hover {
+  background-color: #0056b3;
+}
+
+.comments-list {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-item .avatar {
+  margin-right: 15px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.comment-item .comment-content {
+  flex: 1;
+}
+
+.comment-item .comment-author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-item .comment-date {
+  color: #888;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.comment-item .comment-text {
+  margin-top: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 600px) {
+  .parking-area-detail {
+    padding: 10px;
+  }
+
+  .parking-area-detail img {
+    max-height: 200px;
+  }
+
+  .parking-area-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rent-form-row {
+    flex-direction: column;
+  }
+
+  .comment-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-item .avatar {
+    margin-bottom: 10px;
+  }
+}

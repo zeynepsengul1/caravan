@@ -1,0 +1,87 @@
+/* MapDirections.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.experience-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.experience-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-form-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  color: #007bff;
+}
+
+.experience-form-container input[type="text"],
+.experience-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.experience-form-container input[type="text"]:focus,
+.experience-form-container textarea:focus {
+  border-color: #007bff;
+}
+
+.experience-form-container textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.experience-form-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start;
+}
+
+.experience-form-container button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.experience-form-container button:active {
+  background-color: #003f7f;
+}
+
+.page-background {
+  background: linear-gradient(to right,lightgoldenrodyellow, lightgoldenrodyellow); /* Daha açık bir gradyan renk uyguladık */
+}
+
+@media (max-width: 600px) {
+  .experience-form-container {
+    padding: 15px;
+  }
+
+  .experience-form-container button {
+    width: 100%;
+    text-align: center;
+  }
+}

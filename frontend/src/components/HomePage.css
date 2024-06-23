@@ -1,0 +1,125 @@
+/* HomePage.css */
+
+/* Genel Stil */
+body {
+  background-color: #e0f7fa; /* Açık mavi arkaplan */
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 400px; /* Adjust height as needed */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #ffeb3b; /* Sarı renk başlık */
+}
+
+.hero span {
+  font-size: 1.2em;
+  max-width: 600px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #ffffff; /* Beyaz renk metin */
+}
+
+/* Recent Section */
+.recent {
+  margin-top: 40px;
+  background-color: #ffffff; /* Beyaz arkaplan */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Alternatif arkaplan renkleri */
+.recent:nth-child(odd) {
+  background-color: #ffe0b2; /* Hafif turuncu arkaplan */
+}
+
+.recent:nth-child(even) {
+  background-color: #c8e6c9; /* Hafif yeşil arkaplan */
+}
+
+.recent-text {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: darkgreen; /* Mavi renk başlık */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* MinimalPost and MinimalParkingArea */
+.minimal-post, .minimal-parking-area {
+  width: calc(33.33% - 20px); /* Adjust as needed for responsiveness */
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.minimal-post:hover, .minimal-parking-area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.minimal-post h2, .minimal-parking-area h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #007bff; /* Mavi renk başlık */
+}
+
+.minimal-post p, .minimal-parking-area p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #666; /* Açık gri renk metin */
+}
+
+/* See More Button */
+.animated-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.animated-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .minimal-post, .minimal-parking-area {
+    width: calc(50% - 20px); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .minimal-post, .minimal-parking-area {
+    width: 100%; /* Stack items on smaller screens */
+  }
+}

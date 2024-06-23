@@ -10,6 +10,8 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'; // Googl
 
 import CommentForm from './CommentForm';
 import CommentsList from './CommentsList';
+import './ParkingAreaDetail.css'; // CSS dosyasını içe aktarın
+
 
 registerLocale('ro', ro);
 
@@ -110,7 +112,7 @@ const ParkingAreaDetail = () => {
     <div className="parking-area-detail">
       <img src={parkingArea.thumbnail} alt="Parking Area Thumbnail" style={{ width: "100%", height: "100%" }} />
       <h1>{parkingArea.title}</h1>
-      <Tags values={parkingArea.tags} />
+
       <h3>Per day from: <span style={{ color: "blue" }}>$ {parkingArea.price}</span></h3>
       <div className="parking-area-info">
         <img src={parkingArea.author.avatar} alt="Author Avatar" className="avatar-medium" />
@@ -161,7 +163,7 @@ const ParkingAreaDetail = () => {
           </div>
         </div>
         <button className="animated-button" type="submit" style={{ borderRadius: "5px", padding: "0:30px", width: "200px" }}>
-          <span><strong>Rent</strong></span>
+          <span><strong>Reservation</strong></span>
         </button>
       </form>
     </div>

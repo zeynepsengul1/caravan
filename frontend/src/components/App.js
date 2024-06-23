@@ -23,6 +23,8 @@ import User from "./user/User";
 import ScrollToTop from "./ScrollToTop";
 import NewPostForm from "./posts/NewPostForm";
 import MapWithDirections from './parkingarea/MapWithDirections';
+import ExperienceForm from "./ai/ExperienceForm";
+import MapDirections from "./ai/MapDirections";
 
 const App = () => {
   return (
@@ -39,6 +41,10 @@ const App = () => {
             <Route path="/new-parking-area" component={NewParkingAreaForm} />
             <Route path="/new-post" component={NewPostForm} />
             <Route path="/directions" component={MapWithDirections} />
+            <Route path="/ai" component={ExperienceForm} />
+            <Route path="/get_route" component={MapDirections} />
+
+
 
             {/* Everyone except logged in user can enter */}
             <NoAuthRoute path="/signup" component={Signup} />

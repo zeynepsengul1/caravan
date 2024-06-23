@@ -22,10 +22,13 @@ const CommentsList = ({ slug }) => {
       {comments.length > 0 ? (
         <ul>
           {comments.map((comment, index) => (
-            <li key={index}>
-              <p>{comment.text}</p>
-              <span>{comment.user.username}</span>
-              <span>{comment.created_at}</span>
+            <li key={index} className="comment-item clearfix">
+              <img src={comment.user.avatar} alt="Avatar" className="avatar" />
+              <div className="comment-content">
+                <span className="comment-author">{comment.user.username}</span>
+                <span className="comment-date">{comment.created_at}</span>
+                <p className="comment-text">{comment.text}</p>
+              </div>
             </li>
           ))}
         </ul>

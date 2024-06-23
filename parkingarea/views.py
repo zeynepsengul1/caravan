@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status, viewsets, permissions, generics
+from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -27,7 +27,7 @@ class ParkingAreas(APIView):
         recent = request.query_params.get('recent')
         queryset = ParkingArea.public_objects.filter(available=True)
         if recent == 'true':
-            queryset = queryset[:4]
+            queryset = queryset[:3]
 
         serializer = ParkingAreaSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -131,3 +131,5 @@ class CommentListCreateAPIView(APIView):
             serializer.save(user=request.user, parking_area=parking_area)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

@@ -40,3 +40,4 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         parking_area = validated_data.pop('parking_area')
         comment = Comment.objects.create(user=user, parking_area=parking_area, **validated_data)
         return comment
+

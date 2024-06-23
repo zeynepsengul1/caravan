@@ -12,7 +12,7 @@ class ParkingAreaAdmin(SummernoteModelAdmin):
     list_filter = ('is_public', 'available', 'rental_start', 'rental_end',)
     search_fields = ['title', 'slug', 'author']
     prepopulated_fields = {'slug': ('title',)}
-    actions = ['make_public', 'make_unpublic', 'make_available', 'make_unavailable']
+    actions = ['make_public', 'make_unpublic', 'make_', 'make_unavailable',  'make_available']
 
     def get_queryset(self, request):
         # Use the default manager to ensure all ParkingArea instances are returned

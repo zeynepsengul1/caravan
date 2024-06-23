@@ -36,7 +36,9 @@ const NavBar = () => {
   }, [open]);
 
   const handleGetDirections = () => {
-    history.push("/directions"); // "directions" rotası, MapWithDirections bileşenini gösteren sayfa rotası
+    history.push("/directions"); // "directions" rotası, MapDirections bileşenini gösteren sayfa rotası
+    history.push("/ai"); // "directions" rotası, MapWithDirections bileşenini gösteren sayfa rotası
+
   };
 
   const renderDesktop = () => {
@@ -49,7 +51,7 @@ const NavBar = () => {
             </li>
             <li>
                 <NavLink className="navbar-item" to="/posts">
-                    Posts
+                    Caravans
                 </NavLink>
             </li>
             <li>
@@ -66,12 +68,17 @@ const NavBar = () => {
                     </li>
                     <li>
                         <NavLink className="navbar-item" to="/new-post">
-                            Add Post
+                            Add Caravan
                         </NavLink>
                     </li>
                     <li>
                         <NavLink className="navbar-item" to="/directions" onClick={handleGetDirections}>
                             Get Directions
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="navbar-item" to="/ai">
+                             AI
                         </NavLink>
                     </li>
                     <li>
@@ -137,69 +144,74 @@ const NavBar = () => {
             transform: open ? "translateX(0)" : "translateX(100%)",
           }}
         >
-          <ul className="navbar-mobile-items">
-            <li onClick={handleMobileMenu}>
-              <NavLink className="mobile-link" exact to="/">
-                <strong>Home</strong>
-              </NavLink>
-            </li>
-            <li onClick={handleMobileMenu}>
-              <NavLink className="mobile-link" to="/posts">
-                Posts
-              </NavLink>
-            </li>
-            <li onClick={handleMobileMenu}>
-              <NavLink className="mobile-link" to="/parkingareas">
-                Parking Areas
-              </NavLink>
-            </li>
-            {user !== null ? (
-                <>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/new-parking-area">
-                      Add Parking Area
+            <ul className="navbar-mobile-items">
+                <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" exact to="/">
+                        <strong>Home</strong>
                     </NavLink>
-                  </li>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/new-post">
-                      Add Post
+                </li>
+                <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/posts">
+                        Caravans
                     </NavLink>
-                  </li>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/user">
-                      User Panel
+                </li>
+                <li onClick={handleMobileMenu}>
+                    <NavLink className="mobile-link" to="/parkingareas">
+                        Parking Areas
                     </NavLink>
-                  </li>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/logout">
-                      Log Out
-                    </NavLink>
-                  </li>
-                </>
-            ) : (
-                <>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/signup">
-                      Sign Up
-                    </NavLink>
-                  </li>
-                  <li onClick={handleMobileMenu}>
-                    <NavLink className="mobile-link" to="/login">
-                      Log In
-                    </NavLink>
-                  </li>
-                </>
-            )}
-            <li onClick={handleMobileMenu}>
-              <button className="mobile-link" onClick={handleGetDirections}>
-                Get Directions
-              </button>
-            </li>
-          </ul>
+                </li>
+                {user !== null ? (
+                    <>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/new-parking-area">
+                                Add Parking Area
+                            </NavLink>
+                        </li>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/new-post">
+                                Add Caravan
+                            </NavLink>
+                        </li>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/user">
+                                User Panel
+                            </NavLink>
+                        </li>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/logout">
+                                Log Out
+                            </NavLink>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/signup">
+                                Sign Up
+                            </NavLink>
+                        </li>
+                        <li onClick={handleMobileMenu}>
+                            <NavLink className="mobile-link" to="/login">
+                                Log In
+                            </NavLink>
+                        </li>
+                    </>
+                )}
+                <li onClick={handleMobileMenu}>
+                    <button className="mobile-link" onClick={handleGetDirections}>
+                        Get Directions
+                    </button>
+                </li>
+                <li onClick={handleMobileMenu}>
+                    <button className="mobile-link" onClick={handleGetDirections}>
+                       AI
+                    </button>
+                </li>
+            </ul>
         </div>
       )}
-      </>
-  );
+        </>
+    );
 };
 
 export default NavBar;

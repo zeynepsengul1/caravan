@@ -9,10 +9,12 @@ const ExperienceForm = () => {
   const [startingAddress, setStartingAddress] = useState('');
   const [parkingAreas, setParkingAreas] = useState([]);
   const [route, setRoute] = useState(null);  // State to hold the route data
+
   useEffect(() => {
     fetchParkingAreas();
   }, []);
-    const history = useHistory();
+
+  const history = useHistory();
 
   const fetchParkingAreas = async () => {
     try {
@@ -29,7 +31,7 @@ const ExperienceForm = () => {
     const csrfToken = getCsrfToken();
 
     try {
-      const response = await connection.post('ai/get_route/',
+      const response = await connection.post('get_route/',
         {
           experience_description: experienceDescription,
           starting_address: startingAddress
@@ -42,9 +44,17 @@ const ExperienceForm = () => {
           }
         }
       );
-      history.push('ai/get_route');
-      console.log(response)
-      setRoute(response);  // Store the route data
+
+      // Log the response to the console
+
+      history.push('get_route');
+      console.log(response.data);
+     // setRoute(response.data);  // Store the route data
+      setRoute({
+          destination: "41.030166056928785,28.91660190429687",
+          starting_address: startingAddress
+        });  // Store the route data
+
     } catch (error) {
       console.error(error);
       alert('Route hesaplama cagirilirken bir hata oluştu.');

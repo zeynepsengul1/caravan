@@ -1,8 +1,7 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+
 from ai.views import UserPreferenceViewSet
 
 urlpatterns = [
-    path('/', UserPreferenceViewSet.as_view()),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('get_route/', UserPreferenceViewSet.as_view()),
+    ]

@@ -1,53 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { GoogleMap, LoadScript, DirectionsRenderer } from '@react-google-maps/api';
+import React, {useCallback, useState} from 'react';
+import {GoogleMap, LoadScript, DirectionsRenderer, DirectionsService} from '@react-google-maps/api';
 
+// eslint-disable-next-line react/prop-types
 const MapDirections = ({ route }) => {
     const [directionsResponse, setDirectionsResponse] = useState(null);
+    const googleMapsApiKey = "AIzaSyBdj3YegSVEUImmkWeD1b24MqyYYdAH5qE";
 
-    useEffect(() => {
-        if (route) {
-            calculateRoute();
-        }
-    }, [route]);
+    console.log(route)
+    const navigateToGoogleMaps = () => {
 
-    const calculateRoute = () => {
-        const directionsService = new window.google.maps.DirectionsService();
-        const directionsRequest = {
-            origin: route.starting_address,
-            destination: route.destination,
-            travelMode: 'DRIVING'
-        };
+        // eslint-disable-next-line react/prop-types
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${route.starting_address}&destination=${route.destination}&travelmode=driving`;
+            window.open(googleMapsUrl, "_blank");
 
-        directionsService.route(directionsRequest, (result, status) => {
-            if (status === 'OK' && result) {
-                setDirectionsResponse(result);
-            }
-        });
     };
-
+    const handleDirectionsCallback = useCallback((response) => {
+        if (response !== null) {
+            if (response.status === 'OK') {
+                setDirectionsResponse(response);
+            } else {
+                console.log('response: ', response);
+            }
+        }
+    }, []);
     return (
-        <LoadScript googleMapsApiKey="AIzaSyBdj3YegSVEUImmkWeD1b24MqyYYdAH5qE">
-            <GoogleMap
-                mapContainerStyle={{ width: '100%', height: '400px' }}
-                center={{ lat: 41.0082, lng: 28.9784 }}
-                zoom={10}
-            >
-                {directionsResponse && (
-                    <DirectionsRenderer
-                        directions={directionsResponse}
-                    />
-                )}
-            </GoogleMap>
-        </LoadScript>
+        <div className="map-container">
+            <button className="view-on-maps-btn" onClick={navigateToGoogleMaps}>Google Maps'te Gör</button>
+            {/* eslint-disable-next-line no-undef */}
+
+        </div>
     );
 };
 
-MapDirections.propTypes = {
-    route: PropTypes.shape({
-        starting_address: PropTypes.string.isRequired,
-        destination: PropTypes.string.isRequired
-    })
-};
+
 
 export default MapDirections;
